@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "dotenv/config";
 import Shop from "./pages/Shop/Shop";
 import Layout from "./layout/Layout";
 import Admin from "./pages/Admin/Admin";
 import Basket from "./pages/Basket/Basket";
-import Auth from "./pages/Auth/Auth";
 import Device from "./pages/Device/Device";
 import { paths } from "./paths/paths";
 import "./scss/main.scss";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import Registration from "./pages/Registration/Registration";
+import Login from "./pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +31,12 @@ const router = createBrowserRouter([
         element: <Basket />,
       },
       {
-        path: paths.auth,
-        element: <Auth />,
+        path: paths.login,
+        element: <Login />,
+      },
+      {
+        path: paths.registration,
+        element: <Registration />,
       },
       {
         path: paths.device + "/:id",
@@ -42,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

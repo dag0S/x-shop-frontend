@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { authApi } from "./services/auth";
 import auth from "./features/authSlice";
 import devices from "./features/deviceSlice";
+import types from "./features/typesSlice";
+import brands from "./features/brandsSlice";
 import { listenerMiddleware } from "./middleware/auth";
 
 export const store = configureStore({
@@ -9,6 +11,8 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     auth,
     devices,
+    types,
+    brands
   },
 
   middleware: (getDefaultMiddleware) =>

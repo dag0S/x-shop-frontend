@@ -14,3 +14,13 @@ export interface IDevice {
   typeId: number;
   brandId: number;
 }
+export interface IType {
+  id: number;
+  name: string;
+}
+
+export interface IBrand {
+  id: number;
+  name: string;
+}
+
