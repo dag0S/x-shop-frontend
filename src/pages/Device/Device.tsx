@@ -4,7 +4,6 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemButton,
   ListItemText,
   Paper,
   Typography,
@@ -61,13 +60,22 @@ const Device = () => {
           <Button
             variant="contained"
             endIcon={<AddCircleOutline />}
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "#d051e8",
+              ":hover": {
+                backgroundColor: "#af47c4",
+              },
+            }}
           >
             В корзину
           </Button>
         </Grid>
       </Grid>
-      <Typography variant="h3" sx={{marginBottom: 1}}>Характеристики</Typography>
+      <Typography variant="h3" sx={{ marginBottom: 1 }}>
+        Характеристики
+      </Typography>
       <List sx={{ border: "2px solid #240139", padding: 0, borderRadius: 1 }}>
         {description.map((info, i) => (
           <ListItem

@@ -13,7 +13,8 @@ import Container from "@mui/material/Container";
 import { LoginOutlined } from "@mui/icons-material";
 
 const Header = () => {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
+  const user = true;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -45,7 +46,9 @@ const Header = () => {
               </Box>
               {user ? (
                 <Box sx={{ display: "flex", gap: 1 }}>
-                  <Button color="inherit">Админ панель</Button>
+                  <Link to={paths.admin}>
+                    <Button color="inherit">Админ панель</Button>
+                  </Link>
                   <Button color="inherit">Выйти</Button>
                 </Box>
               ) : (
