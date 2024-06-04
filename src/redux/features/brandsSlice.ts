@@ -4,12 +4,12 @@ import { RootState } from "../store";
 import { brandsApi } from "../services/brands";
 
 interface InitialState {
-  types: IBrand[] | null;
+  brands: IBrand[] | null;
   selectedBrand: number | null;
 }
 
 const initialState: InitialState = {
-  types: null,
+  brands: null,
   selectedBrand: null,
 };
 
@@ -26,7 +26,7 @@ const slice = createSlice({
     builder.addMatcher(
       brandsApi.endpoints.getAllBrand.matchFulfilled,
       (state, action) => {
-        state.types = action.payload;
+        state.brands = action.payload;
       }
     );
   },

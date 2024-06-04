@@ -1,7 +1,16 @@
-import { Button, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import CreateBrand from "../../components/Modals/CreateBrand";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import ModalCustom from "../../components/Modals/Modal";
+import { useState } from "react";
+import CreateType from "../../components/Modals/CreateType";
+import CreateDevice from "../../components/Modals/CreateDevice";
 
 const Admin = () => {
+  const [brandVisible, setBrandVisible] = useState(false);
+  const [typeVisible, setTypeVisible] = useState(false);
+  const [deviceVisible, setDeviceVisible] = useState(false);
+
   return (
     <Paper
       sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 3 }}
@@ -12,43 +21,37 @@ const Admin = () => {
       >
         Админ панель
       </Typography>
-      <Button
-        variant="contained"
-        size="large"
-        sx={{
-          backgroundColor: "#d051e8",
-          ":hover": {
-            backgroundColor: "#af47c4",
-          },
-        }}
-      >
-        Добавить товар
-      </Button>
-      <Button
-        variant="contained"
-        size="large"
-        sx={{
-          backgroundColor: "#d051e8",
-          ":hover": {
-            backgroundColor: "#af47c4",
-          },
-        }}
-      >
-        Добавить категорию
-      </Button>
-      <Button
-        variant="contained"
-        size="large"
-        sx={{
-          backgroundColor: "#d051e8",
-          ":hover": {
-            backgroundColor: "#af47c4",
-          },
-        }}
-      >
+      <CustomButton onClick={() => setBrandVisible(true)} size="large">
         Добавить бренд
-      </Button>
-      <CreateBrand open={true} handleClose={() => console.log()} />
+      </CustomButton>
+      <CustomButton onClick={() => setTypeVisible(true)} size="large">
+        Добавить категорию
+      </CustomButton>
+      <CustomButton onClick={() => setDeviceVisible(true)} size="large">
+        Добавить товар
+      </CustomButton>
+
+      <ModalCustom
+        open={brandVisible}
+        handleClose={() => setBrandVisible(false)}
+        title="Добавить бренд"
+      >
+        <CreateBrand />
+      </ModalCustom>
+      <ModalCustom
+        open={typeVisible}
+        handleClose={() => setTypeVisible(false)}
+        title="Добавить категорию"
+      >
+        <CreateType />
+      </ModalCustom>
+      <ModalCustom
+        open={deviceVisible}
+        handleClose={() => setDeviceVisible(false)}
+        title="Добавить товар"
+      >
+        <CreateDevice />
+      </ModalCustom>
     </Paper>
   );
 };
